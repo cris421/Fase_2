@@ -1,0 +1,17 @@
+/*Color de Fondo */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #10293b;
+}
+
+
+/*Clase Fondo */
+.fondo {
+    width: 1270px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 25px;
+}
