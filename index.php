@@ -166,7 +166,7 @@
             var nombre = $('#nombre').val();
             var apellido = $('#apellidos').val();
             var documento = $('#documento').val();
-            var direcion = $('#direccion').val();
+            var direccion = $('#direccion').val();
             var telefono = $('#telefono').val();
             var extension = $('#imagen_usuario').val().split('.').pop().toLowerCase();
             // Validacion de imagen
@@ -197,7 +197,38 @@
                 alert("Todos los campos son obligatorios");
             }
         });
-    });
+
+        //funcionalidad de editar
+        $(document).on('click','.editar',function(){
+            var id_usuario = $(this).attr("id");
+            $.ajax({
+                url:"obtener_registro.php",
+                method:"POST",
+                data:{id_usuario:id_usuario},
+                dataType:"json",
+                success:function(data)
+                {
+                    //console.log(data);
+                    $('#modalUsuario').modal('show');
+                    $('#nombre').val(data.nombre);
+                    $('#apellidos').val(data.apellidos);
+                    $('#telefono').val(data.telefono);
+                    $('#email').val(data.email);
+                    $('.modal-title').text("Editar Usuario");
+                    $('#id_usuario').val(id_usuario);
+                    $('#imagen_subida').html(data.imagen_usuario);
+                    $('#action').val("Editar");
+                    $('#operacion').val("Editar");
+
+                },
+                error:function(jqXHR, textStatus, errorThrowm){
+                    console.log(texStatus, errorThrom);
+                }
+                    
+            })
+                
+        });
+    
     </script>
 
 </body>
