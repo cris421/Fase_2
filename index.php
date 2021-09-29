@@ -25,7 +25,7 @@
 
     <div class="container fondo">
         <h1>Hello, world! GG </h1>
-        <h1 class="text-center">La wea punto.com</h1>
+        <h1 class="text-center">La web punto.com</h1>
         <h1 class="text-center">Menu</h1>
 
         <div class="row">
@@ -74,6 +74,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Registrar Usuario</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <!-- Envio de datos -->
 
                 <form method="POST" id="formulario" enctype="multipart/form-data">
@@ -107,7 +108,7 @@
                             <!-- Foto -->
                             <label for="imagen">Ingrese una imagen</label>
                             <input type="file" name="imagen_usuario" id="imagen_usuario" class="form-control">
-                            <span id="imagen-subida"></span>
+                            <span id="imagen_subida"></span>
                             <br />
                         </div>
                         <div class="modal-footer">
@@ -154,26 +155,28 @@
                 url: "obtener_registros.php",
                 type: "POST"
             },
-            "columnsDefs": [{
+            "columnsDefs":[
+                {
                 "targets": [0, 3, 4],
                 "orderable": false,
-            }, ]
+                },
+            ]
         });
-
+    
         // Insercion de los datos
         $(document).on('submit', '#formulario', function(event) {
             event.preventDefault();
             var nombre = $('#nombre').val();
-            var apellido = $('#apellidos').val();
+            var apellidos = $('#apellidos').val();
             var documento = $('#documento').val();
             var direccion = $('#direccion').val();
             var telefono = $('#telefono').val();
             var extension = $('#imagen_usuario').val().split('.').pop().toLowerCase();
             // Validacion de imagen
             if (extension != '') {
-                if (jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+                if (jQuery.inArray(extension, ['gif', 'png', 'jpg', 'jpeg']) == -1){
                     alert("Formato de imagen invalido");
-                    $('#imagen_usuario').val('');
+                    $("#imagen_usuario").val('');                      
                     return false;
                 }
             }
